@@ -1,0 +1,22 @@
+package locacao;
+
+public class Filme {
+
+    private int chave;
+    private String nome;
+    private int estrelas;
+
+    public Filme(int chave,String nome,int estrelas){
+        this.chave = chave;
+        this.nome = nome;
+        this.estrelas = estrelas;
+    }
+
+    public String exibirDetalhes() {
+        return "Chave: " + chave + "\nNome: " + nome + "\nEstrelas: " + estrelas;
+    }
+
+    protected int getChave(){
+        return this.chave;
+    }
+}
