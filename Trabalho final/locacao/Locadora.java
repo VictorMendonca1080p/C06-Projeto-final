@@ -5,16 +5,23 @@ import pessoa.Funcionario;
 public class Locadora {
 
     private String nome;
-    private Filme[] catalogo;
+    private Filme[] catalogo; // tem que ser um map
     private Funcionario[] funcionarios;
 
+    //mudar vetores de filmes para um map
     public Locadora(String nome){
         this.nome = nome;
         this.catalogo = new Filme[100];
         this.funcionarios = new Funcionario[50];
     }
 
-    public void adicionarFilme(Filme novoFilme){
+    public String getnome()
+    {
+        return this.nome;
+    }
+
+    public void adicionarFilme(int newFilmeChave, String newFilmeNome, int newFilmeEstrelas){
+        Filme novoFilme = new Filme(newFilmeChave, newFilmeNome, newFilmeEstrelas);
         for(int i = 0; i < catalogo.length; i++){
             if (catalogo[i] == null) {
                 catalogo[i] = novoFilme;

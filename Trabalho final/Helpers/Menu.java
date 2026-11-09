@@ -7,6 +7,7 @@ public class Menu {
 
     static private Scanner entrada = new Scanner(System.in);
     static private int opcao = -1;
+    static private String opcaoString = null;
 
     static public void Start(Locadora locadora, Cliente cliente)
 
@@ -16,7 +17,7 @@ public class Menu {
     {
         double totalDaCompra = 0;
         do{
-            System.out.println("Bem vindo a locadora Master, escolha seu cadastro");
+            System.out.println("Bem vindo a locadora " + locadora.getnome() + ", escolha seu cadastro");
             System.out.println("Cliente-(1) | Funcionario-(2)");
 
             opcao = entrada.nextInt();
@@ -40,7 +41,7 @@ public class Menu {
                                 System.out.println("selecione a chave do produto:");
                                 opcao = entrada.nextInt();
                                 totalDaCompra += locadora.calcularPrecoAluguel(opcao);
-                                //cliente.alugarFilme(opcao);
+                                cliente.alugarFilme(opcao);
                                 break;
 
                             case 2:
@@ -59,17 +60,50 @@ public class Menu {
 
                 case 2:
                     // mostra filmes 
-                    // troca filmes 
-                    // deleta filme
                     // adiciona filme
+                    // deleta filme
+                    // troca filmes 
+                    // adiciona funcionario
+                    // remove funcionario 
+                
                     do {
                         System.out.println("Menu do Funcionario: escolha uma opcao...");
-                        
+                        opcao = entrada.nextInt(); 
+
+                        int newChave;
+                        String newNome;
+                        int newEstrelas;
+
                         switch (opcao) {
                             case 1:
+                                locadora.mostrarFilmes();
                                 break;
 
                             case 2:
+                                opcao = entrada.nextInt();
+                                newChave = opcao;
+
+                                opcaoString = entrada.nextLine();
+                                newNome = opcaoString;
+
+                                opcao = entrada.nextInt();
+                                newEstrelas = opcao;
+
+
+                                
+                                locadora.adicionarFilme(newChave, newNome, newEstrelas);
+                                break;
+
+                            case 3:
+                                break;
+
+                            case 4:
+                                break;
+
+                            case 5:
+                                break;
+
+                            case 6:
                                 break;
                         
                             default:
