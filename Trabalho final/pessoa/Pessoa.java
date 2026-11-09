@@ -1,21 +1,19 @@
 package pessoa;
-// quem fizer a interface: descomentar a linha 4
-// se eu fizer isso agora, o código não rodará
-// import descricao.Descritivel;
 
-// ah, e troque a linha " public abstract class Pessoa { " por
-// public abstract class Pessoa implements Descritivel {
+import descricao.Descritivel;
 
-public abstract class Pessoa
-{
+public class Pessoa implements Descritivel{
     protected String nome;
-    protected String cpf;
+    protected String CPF;
 
     public Pessoa(String nome, String cpf)
     {
         this.nome = nome;
-        this.cpf = cpf;
+        this.CPF = cpf;
     }
 
-    public abstract String exibirDetalhes();
+    @Override
+    public String exibirDetalhes() {
+        return "Nome: " + this.nome + "\nCPF: " + this.CPF;
+    }
 }

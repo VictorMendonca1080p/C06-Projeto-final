@@ -1,38 +1,22 @@
 package pessoa;
-import java.util.Random;
 
-public class Funcionario extends Pessoa
-{ //obj-parte
+public class Funcionario extends Pessoa{
     private int idFuncao;
 
-    public Funcionario(String nome, String cpf, int idFuncao)
+    public Funcionario(String nome, String CPF, int idFuncao)
     {
-        super(nome, cpf);
+        super(nome, CPF);
         this.idFuncao = idFuncao;
     }
 
-    @Override
-    public String exibirDetalhes()
+    public void executarFuncao(int idFuncao)
     {
-        return "INFORMAÇÕES DO(A) FUNCIONÁRIO(A): " + "\n ID: " + idFuncao + "\n Nome: " + nome + "\n CPF: " + cpf;
-    }
-
-    public void executarFuncao()
-    {
-        Random rand = new Random();
-        int escolha = rand.nextInt(4);
-        String[] trabalhando = {
-                "limpando.",
-                "em pausa.",
-                "atendendo ao cliente.",
-                "se demitindo agorinha pra jogar GTA6..."
-        };
-
-        System.out.println("Funcionário(a) do ID " + idFuncao + " está " + trabalhando[escolha]);
+        //pensar em algo ///////////////////////////////////////////////////////////
     }
 
     public int getIdFuncao()
     {
-        return idFuncao;
+        return this.idFuncao;
     }
+
 }

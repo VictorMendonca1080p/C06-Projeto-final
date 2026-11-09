@@ -12,7 +12,7 @@ public class Cliente extends Pessoa
     @Override
     public String exibirDetalhes()
     {
-        return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + cpf;
+        return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + CPF;
     }
 
     public void alugarFilme(int chaveFilme)
@@ -27,5 +27,5 @@ public class Cliente extends Pessoa
         System.out.println(nome + " solicitou o aluguel do filme de chave " + chaveFilme + ".");
         System.out.println("Total de filmes solicitados por " + nome + ": " + filmesAlugados);
     }
-    }
+    
 }

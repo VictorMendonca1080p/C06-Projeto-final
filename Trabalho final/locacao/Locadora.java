@@ -1,5 +1,6 @@
 package locacao;
-import pessoa.Funcionario; //laís
+
+import pessoa.Funcionario;
 
 public class Locadora {
 
@@ -65,7 +66,7 @@ public class Locadora {
     public double calcularPrecoAluguel(int chaveFilme){
         for(int i = 0; i < catalogo.length; i++){
             if(catalogo[i].getChave() == chaveFilme){
-                return 1; // retorna 1 se achou o fimle, e pode ser add uma formula para calcular o preço
+                return 20; // retorna 1 se achou o fimle, e pode ser add uma formula para calcular o preço
             }
         }
         return 0; // retorn 0 caso n esteja no catalogo
