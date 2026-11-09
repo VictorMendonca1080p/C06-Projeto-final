@@ -8,7 +8,7 @@ public class Menu {
     static public void Start()
     {
         do{
-            System.out.println("Bem vindo escolha uma opção");
+            System.out.println("Bem-vindo(a)! Escolha uma opção: ");
             opcao = entrada.nextInt();
 
             switch (opcao) {
@@ -17,7 +17,7 @@ public class Menu {
                     break;
             
                 default:
-                    System.out.println("escolha uma opção valida");
+                    System.out.println("Escolha uma opção válida: ");
                     break;
             }
 

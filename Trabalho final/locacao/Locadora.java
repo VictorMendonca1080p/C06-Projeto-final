@@ -1,4 +1,5 @@
 package locacao;
+import pessoa.Funcionario; //laís
 
 public class Locadora {
 
