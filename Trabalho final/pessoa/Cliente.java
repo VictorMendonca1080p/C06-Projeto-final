@@ -1,6 +1,8 @@
 package pessoa;
 
-public class Cliente extends Pessoa
+import descricao.Descritivel;
+
+public class Cliente extends Pessoa implements Descritivel
 {
     //laís: conta quantos filmes o cliente ja alugou.
     private int filmesAlugados;
@@ -31,5 +33,5 @@ public class Cliente extends Pessoa
         System.out.println(nome + " solicitou o aluguel do filme de chave " + chaveFilme + ".");
         System.out.println("Total de filmes solicitados por " + nome + ": " + filmesAlugados);
     }
-    
+
 }

@@ -14,7 +14,7 @@ public abstract class Pessoa implements Descritivel
         this.cpf = cpf;
     }
 
-    //lais: sem o corpo de proposito. cada filha PRECISA escrever sua versao
+    //laís: sem o corpo de proposito. cada filha PRECISA escrever sua versao
     //é abstrata. nosso foco tem que ser redirecionar o descritivel, e não tirar o requisito da abstracao
     @Override
     public abstract String exibirDetalhes();

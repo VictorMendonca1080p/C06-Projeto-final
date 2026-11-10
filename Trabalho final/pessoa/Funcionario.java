@@ -1,9 +1,10 @@
 package pessoa;
+import descricao.Descritivel;
 
 import java.util.Random;
 
 //laís: funcionario e o objeto-parte da relaçao com a locadora
-public class Funcionario extends Pessoa
+public class Funcionario extends Pessoa implements Descritivel
 {
     //laís: codigo da funçao. e por ele que a locadora acha o funcionario para remover
     private int idFuncao;
@@ -41,7 +42,6 @@ public class Funcionario extends Pessoa
     //laís: idFuncao é private, entao a locadora precisa deste getter pra comparar
     public int getIdFuncao()
     {
-        return this.idFuncao;
+        return idFuncao;
     }
-
 }

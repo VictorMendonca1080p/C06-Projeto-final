@@ -2,7 +2,7 @@ package locacao;
 
 import descricao.Descritivel;
 
-public class Filme implements Descritivel{
+public class Filme implements Descritivel {
 
     private int chave;
     private String nome;
@@ -14,7 +14,6 @@ public class Filme implements Descritivel{
         this.estrelas = estrelas;
     }
 
-    @Override 
     public String exibirDetalhes() {
         return "Chave: " + chave + "\nNome: " + nome + "\nEstrelas: " + estrelas;
     }

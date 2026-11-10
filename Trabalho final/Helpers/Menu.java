@@ -55,7 +55,7 @@ public class Menu {
                             case 3:
                                 System.out.println(cliente.exibirDetalhes()); //laís: mostra os dados do proprio cliente que ests usando o programa
                                 break;
-                        
+
                             default:
                                 System.out.println("escolha uma opção valida");
                                 break;
