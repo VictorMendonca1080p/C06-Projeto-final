@@ -1,5 +1,6 @@
 import locacao.Locadora;
 import pessoa.Cliente;
+import Helpers.Menu;
 
 public class Main {
     public static void main(String[] args) {
