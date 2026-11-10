@@ -1,7 +1,9 @@
 package pessoa;
+import descricao.Descritivel;
+
 import java.util.Random;
 
-public class Funcionario extends Pessoa
+public class Funcionario extends Pessoa implements Descritivel
 { //obj-parte
     private int idFuncao;
 

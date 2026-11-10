@@ -1,6 +1,8 @@
 package locacao;
 
-public class Filme {
+import descricao.Descritivel;
+
+public class Filme implements Descritivel {
 
     private int chave;
     private String nome;

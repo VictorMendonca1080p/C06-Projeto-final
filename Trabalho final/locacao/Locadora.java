@@ -1,4 +1,6 @@
 package locacao;
+import excesao.MissingFilmeException;
+import excesao.MissingFuncionarioException;
 import pessoa.Funcionario; //laís
 
 public class Locadora {
@@ -22,17 +24,23 @@ public class Locadora {
     }
 
     public void removerFilme(int chaveFilme){
-        for(int i = 0; i < catalogo.length; i++){
-            if(catalogo[i] != null && catalogo[i].getChave() == chaveFilme){
+        for (int i = 0; i < catalogo.length; i++) {
+            if (catalogo[i] != null && catalogo[i].getChave() == chaveFilme) {
                 catalogo[i] = null;
+                return;
             }
         }
+        throw new MissingFilmeException(
+                "Filme não encontrado para a remoção! " +
+                        "Verifique se o código do filme está certo ou se o filme existe."
+        );
     }
 
     public void trocarFilme(int chaveAntiga, String nomeNovo, int estrelasNovo){
         for(int i = 0; i < catalogo.length; i++){
             if(catalogo[i].getChave() == chaveAntiga){
                 catalogo[i] = new Filme(chaveAntiga,nomeNovo,estrelasNovo);
+                return;
             }
         }
     }
@@ -49,16 +57,25 @@ public class Locadora {
         for(int i = 0; i < funcionarios.length; i++){
             if(funcionarios[i] != null && funcionarios[i].getIdFuncao() == idFuncao){
                 funcionarios[i] = null;
+                return;
             }
         }
+        throw new MissingFuncionarioException("Funcionario nao encontrado para remocao! " +
+                "Verifique se o ID do funcionario existe.");
     }
 
     public void mostrarFilmes() {
-        for(int i = 0; i < catalogo.length; i++){
-            if(catalogo[i] != null){
+        boolean catalogoVazio = true;
+
+        for (int i = 0; i < catalogo.length; i++) {
+            if (catalogo[i] != null) {
                 System.out.println(catalogo[i].exibirDetalhes());
                 System.out.println("--------------------");
+                catalogoVazio = false;
             }
+        }
+        if (catalogoVazio) {
+            System.out.println("O servidor não tem nenhum filme no momento!");
         }
     }
 
