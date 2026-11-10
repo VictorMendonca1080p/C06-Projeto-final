@@ -12,7 +12,7 @@ public class Cliente extends Pessoa
     @Override
     public String exibirDetalhes()
     {
-        return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + CPF;
+        return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
     public void alugarFilme(int chaveFilme)

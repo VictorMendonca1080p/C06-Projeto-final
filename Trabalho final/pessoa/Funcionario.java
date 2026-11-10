@@ -2,7 +2,8 @@ package pessoa;
 
 import java.util.Random;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa
+{
     private int idFuncao;
 
     public Funcionario(String nome, String cpf, int idFuncao)
@@ -14,13 +15,14 @@ public class Funcionario extends Pessoa{
     @Override
     public String exibirDetalhes()
     {
-        return "INFORMAÇÕES DO(A) FUNCIONÁRIO(A): " + "\n ID: " + idFuncao + "\n Nome: " + nome + "\n CPF: " + CPF;
+        return "INFORMAÇÕES DO(A) FUNCIONÁRIO(A): " + "\n ID: " + idFuncao + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
     public void executarFuncao()
     {
         Random rand = new Random();
         int escolha = rand.nextInt(4);
+
         String[] trabalhando = {
                 "limpando.",
                 "em pausa.",
