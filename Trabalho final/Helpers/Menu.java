@@ -18,8 +18,8 @@ public class Menu {
     {
         double totalDaCompra = 0;
         do{
-            System.out.println("Bem vindo a locadora " + locadora.getnome() + ", escolha seu cadastro");
-            System.out.println("Cliente-(1) | Funcionario-(2)");
+            System.out.println("Bem vindo a locadora " + locadora.getNome() + ", escolha seu cadastro");
+            System.out.println("Cliente-(1) | Funcionario-(2) | Sair-(0)");
 
             opcao = entrada.nextInt();
 
@@ -34,7 +34,7 @@ public class Menu {
                         System.out.println("1 - adicionar ao carrinho");
                         System.out.println("2 - finalizar compra");
                         System.out.println("3 - ver meus dados"); //laís: chama o exibirDetalhes do Cliente
-
+                        System.out.println("4 - sair do menu de Clientes");
                         locadora.mostrarFilmes();
                         opcao = entrada.nextInt();
                         
@@ -61,7 +61,7 @@ public class Menu {
                                 break;
                         }
 
-                    } while (opcao != 2);
+                    } while (opcao != 4);
                     break;
 
                 case 2:
@@ -74,11 +74,22 @@ public class Menu {
                 
                     do {
                         System.out.println("Menu do Funcionario: escolha uma opcao...");
+
+                        System.out.println("1 - mostrar filmes");
+                        System.out.println("2 - adicionar filme");
+                        System.out.println("3 - remover filme");
+                        System.out.println("4 - trocar filme");
+                        System.out.println("5 - adicionar funcionario");
+                        System.out.println("6 - remover funcionario");
+                        System.out.println("7 - sair do menu de funcionarios");
+                        
                         opcao = entrada.nextInt(); 
 
                         int newChave;
                         String newNome;
                         int newEstrelas;
+
+                        
 
                         switch (opcao) {
                             case 1:
@@ -86,21 +97,45 @@ public class Menu {
                                 break;
 
                             case 2:
+                                System.out.println("Informe uma chave para o produto: ");
                                 opcao = entrada.nextInt();
                                 newChave = opcao;
 
+                                System.out.println("Informe o nome do novo filme: ");
                                 opcaoString = entrada.nextLine();
                                 newNome = opcaoString;
 
+                                System.out.println("Informe a quantidade de estrelas do novo filme: ");
                                 opcao = entrada.nextInt();
                                 newEstrelas = opcao;
 
-
-                                
                                 locadora.adicionarFilme(newChave, newNome, newEstrelas);
                                 break;
 
-                            case 3: //laís: cadastra um funcionario novo com o que o usuario digitar
+                            case 3:
+                                System.out.println("Informe a chve do produto a ser removido: ");
+                                opcao = entrada.nextInt();
+                                locadora.removerFilme(opcao);
+
+                                break;
+
+                            case 4:
+                                System.out.println("Informe uma nova chave para o produto: ");
+                                opcao = entrada.nextInt();
+                                newChave = opcao;
+
+                                System.out.println("Informe um novo nome para o filme: ");
+                                opcaoString = entrada.nextLine();
+                                newNome = opcaoString;
+
+                                System.out.println("Informe a nova quantidade de estrelas do filme: ");
+                                opcao = entrada.nextInt();
+                                newEstrelas = opcao;
+
+                                locadora.trocarFilme(newChave, newNome, newEstrelas);
+                                break;
+                      
+                            case 5: //laís: cadastra um funcionario novo com o que o usuario digitar
                             {
                                 entrada.nextLine(); //laís: o nextint deixa o enter pra trás. essa linha
                                 //limpa o que teve antes de chegar aqui, senao a pergunta sai vazia.
@@ -120,7 +155,7 @@ public class Menu {
                                 break;
                             }
 
-                            case 4: //laís: remove um funcionario
+                            case 6: //laís: remove um funcionario
                             {
                                 entrada.nextLine(); //laís: mesma limpeza do enter
 
@@ -130,18 +165,12 @@ public class Menu {
                                 break;
                             }
 
-                            case 5:
-                                break;
-
-                            case 6:
-                                break;
-                        
                             default:
                                 System.out.println("escolha uma opção valida");
                                 break;
                         }
 
-                    } while (opcao != 2);
+                    } while (opcao != 7);
 
                     break;
             

@@ -1,10 +1,9 @@
 package pessoa;
-import descricao.Descritivel;
 
 import java.util.Random;
 
 //laís: funcionario e o objeto-parte da relaçao com a locadora
-public class Funcionario extends Pessoa implements Descritivel
+public class Funcionario extends Pessoa
 {
     //laís: codigo da funçao. e por ele que a locadora acha o funcionario para remover
     private int idFuncao;

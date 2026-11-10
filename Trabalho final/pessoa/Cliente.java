@@ -1,8 +1,7 @@
 package pessoa;
 
-import descricao.Descritivel;
 
-public class Cliente extends Pessoa implements Descritivel
+public class Cliente extends Pessoa
 {
     //laís: conta quantos filmes o cliente ja alugou.
     private int filmesAlugados;
