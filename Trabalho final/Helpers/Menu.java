@@ -223,7 +223,8 @@ public class Menu {
             {
                 numeroLido = Integer.parseInt(digitado.trim());
                 numeroValido = true;
-            } catch (NumberFormatException erroFormato)
+            }
+            catch (NumberFormatException erroFormato)
             {
                 System.out.println("Isso não é um número inteiro. Tente novamente: ");
             }
