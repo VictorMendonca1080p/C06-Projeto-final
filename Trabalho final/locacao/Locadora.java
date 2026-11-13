@@ -3,10 +3,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-
-import excesao.MissingFilmeException;
 import excesao.MissingFuncionarioException;
 import pessoa.Funcionario; //laís
 
@@ -31,13 +30,11 @@ public class Locadora {
         Filme novoFilme = new Filme(newChave, newNome, newEstrelas);
         catalogo.add(novoFilme);
         
-    
-
-        Path arquivo = Paths.get("C:\\Documentos\\C06\\C06-Projeto-final-main\\Trabalho final\\locacao\\catalogo.txt");
+        Path arquivo = Paths.get("locacao\\catalogo.txt");
 
         try {
-            Files.writeString(arquivo, newChave + " " + newNome + " " + newEstrelas);
-            
+            Files.writeString(arquivo, newChave + " " + newNome + " " + newEstrelas + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND );
+
             System.out.println("Filme adicionado com sucesso!");
             } catch (IOException e) {
             e.getStackTrace();
@@ -60,23 +57,31 @@ public class Locadora {
 
 
 
-        Path arquivo = Paths.get("C:\\\\Documentos\\\\C06\\\\C06-Projeto-final-main\\\\Trabalho final\\\\locacao\\\\catalogo.txt");
+        Path arquivo = Paths.get("locacao\\catalogo.txt");
     
         try {
             List<String> filecontent = Files.readAllLines(arquivo);
+            List<String> ListaAtualizada = new ArrayList<String>();
 
             filecontent.forEach((linha) -> {
                 String[] linhaQuebrada = linha.split(" ");
-                if (linhaQuebrada[0] == chaveFilme) 
+                if (linhaQuebrada[0].equals(String.valueOf(chaveFilme)))
                 {
-                    try {
-                        Files.writeString(arquivo, "Removido");
-                        System.out.println("Filme removido com sucesso!");
-                    } catch (IOException e) {
-                        e.getStackTrace();
-                    }
-                    
+                    ListaAtualizada.add("Removido");
+                    System.out.println("Filme removido com sucesso!");
+        
                 }
+                else
+                {
+                    ListaAtualizada.add(linha);
+                }
+
+                try {
+                    Files.write(arquivo, ListaAtualizada);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
             });
 
             } catch (IOException e) {
@@ -86,13 +91,6 @@ public class Locadora {
     }
 
     public void trocarFilme(int chaveAntiga, String nomeNovo, int estrelasNovo){
-
-        /* for (Filme filme : catalogo) {
-            if(filme.getChave() == chaveAntiga){
-                filme = new Filme(chaveAntiga,nomeNovo,estrelasNovo);
-                return;
-            }
-        } */
 
         for (int i = 0; i < catalogo.size(); i++)
         {
