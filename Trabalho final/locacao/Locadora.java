@@ -40,17 +40,43 @@ public class Locadora {
 
         try {
             Files.writeString(arquivo, newChave + " " + newNome + " " + newEstrelas);
-            System.out.println("filme adicionado com sucesso !");
+            System.out.println("Filme adicionado com sucesso!");
             } catch (Exception e) {
             e.getStackTrace();
         }
     }
 
     public void removerFilme(int chaveFilme){
-        for (Filme filme : catalogo) {
+        /*for (Filme filme : catalogo) {
             if (filme != null && filme.getChave() == chaveFilme) {
                 filme = null;
                 return;
+            }
+        }*/
+
+        /* for(Filme filme : catalogo)
+        {
+            if (filme == null)
+            {
+                return;
+            }
+
+            else if (filme.getChave() == chaveFilme)
+            {
+                catalogo.remove(filme);
+                System.out.println("Filme " + filme + " removido.");
+                return;
+            }
+        }*/
+
+        for (int i = 0; i < catalogo.size(); i++)
+        {
+            Filme filme = catalogo.get(i);
+            if (filme != null && filme.getChave() == chaveFilme)
+            {
+                catalogo.remove(i);
+                System.out.println("Filme " + filme + " removido.");
+                break;
             }
         }
 
@@ -69,8 +95,8 @@ public class Locadora {
                 if (linhaQuebrada[0] == "" + chaveFilme) 
                 {
                     try {
-                        Files.writeString(arquivo, "removido");
-                        System.out.println("filme removido com sucesso !");
+                        Files.writeString(arquivo, "Removido");
+                        System.out.println("Filme removido com sucesso!");
                     } catch (IOException e) {
                         e.getStackTrace();
                     }
@@ -86,10 +112,20 @@ public class Locadora {
 
     public void trocarFilme(int chaveAntiga, String nomeNovo, int estrelasNovo){
 
-        for (Filme filme : catalogo) {
+        /* for (Filme filme : catalogo) {
             if(filme.getChave() == chaveAntiga){
                 filme = new Filme(chaveAntiga,nomeNovo,estrelasNovo);
                 return;
+            }
+        } */
+
+        for (int i = 0; i < catalogo.size(); i++)
+        {
+            Filme filme = catalogo.get(i);
+            if (filme != null && filme.getChave() == chaveAntiga)
+            {
+                catalogo.set(i, new Filme(chaveAntiga, nomeNovo, estrelasNovo));
+                break; //sai só for para continuar até a atualização do arquivo
             }
         }
 
@@ -109,7 +145,7 @@ public class Locadora {
                 {
                     try {
                         Files.writeString(arquivo, chaveAntiga + " " + nomeNovo + " " + estrelasNovo);
-                        System.out.println("filme trocado com sucesso !");
+                        System.out.println("Filme trocado com sucesso!");
                     } catch (IOException e) {
                         e.getStackTrace();
                     }
@@ -122,25 +158,70 @@ public class Locadora {
             }
     }
 
-    public void adicionarFuncionario(Funcionario novoFuncionario){
-        for (Funcionario funcionario : funcionarios) {
+    public void adicionarFuncionario(Funcionario novoFuncionario){ //consertado
+        /*for (Funcionario funcionario : funcionarios) {
             if(funcionario == null){
                 funcionario = novoFuncionario;
             }
+        }*/ //esse for nao adicionava nada
+
+        if(novoFuncionario == null)
+        {
+            return;
         }
+
+        for (Funcionario funcionario : funcionarios) //percorre a lista pra ver se tem ID repetido
+        {
+            if (funcionario.getIdFuncao() == novoFuncionario.getIdFuncao())
+            {
+                System.out.println("Já existe um funcionário com esse ID!");
+                return; //return eh melhor que break pois sairá do metodo por completo, e não somente do for e irá
+                        //para o proximo comando, senão não cumpriria o que pede, que é cancelar o cadastro sem adicionar
+                        //se houver ID repetido
+            }
+        }
+
+        funcionarios.add(novoFuncionario); //se nao tiver nada de errado, adiciona
+
     }
 
     public void removerFuncionario(int idFuncao){
 
-        for (Funcionario funcionario : funcionarios) {
+        /*for (Funcionario funcionario : funcionarios) {
             if(funcionario != null && funcionario.getIdFuncao() == idFuncao){
                 funcionario = null;
                 return;
             }
+        }*/ //esse for nao removia nada
+
+        /* for(Funcionario funcionario : funcionarios)
+        {
+            if(funcionario == null)
+            {
+                return;
+            }
+
+            else if (funcionario.getIdFuncao() == idFuncao)
+            {
+                funcionarios.remove(funcionario);
+                System.out.println("Funcionário do ID " + idFuncao + " removido!");
+                return;
+            }
+        }*/
+
+        for (int i = 0; i < funcionarios.size(); i++)
+        {
+            Funcionario f = funcionarios.get(i);
+            if (f != null && f.getIdFuncao() == idFuncao)
+            {
+                funcionarios.remove(i);
+                System.out.println("Funcionário do ID " + idFuncao + " removido!");
+                return;
+            }
         }
         
-        throw new MissingFuncionarioException("Funcionario nao encontrado para remocao! " +
-                "Verifique se o ID do funcionario existe.");
+        throw new MissingFuncionarioException("Funcionário não encontrado para remoção! " +
+                "Verifique se o ID do funcionário existe.");
     }
 
     public void mostrarFilmes() {

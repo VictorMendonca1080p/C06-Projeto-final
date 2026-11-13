@@ -1,5 +1,6 @@
 package Helpers;
 import java.util.Scanner;
+import excesao.MissingFuncionarioException;
 
 import locacao.*;
 import pessoa.*;
@@ -18,7 +19,7 @@ public class Menu {
     {
         double totalDaCompra = 0;
         do{
-            System.out.println("Bem vindo a locadora " + locadora.getNome() + ", escolha seu cadastro");
+            System.out.println("Bem-vindo a locadora " + locadora.getNome() + "! Você é: ");
             System.out.println("Cliente-(1) | Funcionario-(2) | Sair-(0)");
 
             opcao = entrada.nextInt();
@@ -30,25 +31,25 @@ public class Menu {
                     // calcula preco alugel 
                     opcao = -1;
                     do {
-                        System.out.println("Menu do Cliente: escolha uma opcao...");
-                        System.out.println("1 - adicionar ao carrinho");
-                        System.out.println("2 - finalizar compra");
-                        System.out.println("3 - ver meus dados"); //laís: chama o exibirDetalhes do Cliente
-                        System.out.println("4 - sair do menu de Clientes");
+                        System.out.println("Menu do Cliente: escolha uma opção...");
+                        System.out.println("1 - Adicionar ao carrinho");
+                        System.out.println("2 - Finalizar compra");
+                        System.out.println("3 - Ver meus dados"); //laís: chama o exibirDetalhes do Cliente
+                        System.out.println("4 - Sair do menu de Clientes");
                         locadora.mostrarFilmes();
                         opcao = entrada.nextInt();
                         
                         switch (opcao) {
                             case 1:
-                                System.out.println("selecione a chave do produto:");
+                                System.out.print("Selecione a chave do produto: ");
                                 opcao = entrada.nextInt();
                                 totalDaCompra += locadora.calcularPrecoAluguel(opcao);
                                 cliente.alugarFilme(opcao);
                                 break;
 
                             case 2:
-                                System.out.println("Obrigado pela preferencia");
-                                System.out.println("valor total: " + totalDaCompra);
+                                System.out.println("Obrigado pela preferência!");
+                                System.out.println("Valor total: " + totalDaCompra);
                                 opcao = 2;
                                 break;
 
@@ -57,7 +58,7 @@ public class Menu {
                                 break;
 
                             default:
-                                System.out.println("escolha uma opção valida");
+                                System.out.print("Escolha uma opção válida: ");
                                 break;
                         }
 
@@ -73,23 +74,21 @@ public class Menu {
                     // remove funcionario 
                 
                     do {
-                        System.out.println("Menu do Funcionario: escolha uma opcao...");
+                        System.out.println("Menu do Funcionário: escolha uma opção...");
 
-                        System.out.println("1 - mostrar filmes");
-                        System.out.println("2 - adicionar filme");
-                        System.out.println("3 - remover filme");
-                        System.out.println("4 - trocar filme");
-                        System.out.println("5 - adicionar funcionario");
-                        System.out.println("6 - remover funcionario");
-                        System.out.println("7 - sair do menu de funcionarios");
+                        System.out.println("1 - Mostrar filmes");
+                        System.out.println("2 - Adicionar filme");
+                        System.out.println("3 - Remover filme");
+                        System.out.println("4 - Trocar filme");
+                        System.out.println("5 - Adicionar funcionário");
+                        System.out.println("6 - Remover funcionário");
+                        System.out.println("7 - Sair do menu de Funcionários");
                         
                         opcao = entrada.nextInt(); 
 
                         int newChave;
                         String newNome;
                         int newEstrelas;
-
-                        
 
                         switch (opcao) {
                             case 1:
@@ -113,7 +112,7 @@ public class Menu {
                                 break;
 
                             case 3:
-                                System.out.println("Informe a chve do produto a ser removido: ");
+                                System.out.println("Informe a chave do produto a ser removido: ");
                                 opcao = entrada.nextInt();
                                 locadora.removerFilme(opcao);
 
@@ -160,8 +159,17 @@ public class Menu {
                                 entrada.nextLine(); //laís: mesma limpeza do enter
 
                                 int idRemover = lerInteiro("Código da função do funcionário que sai: ");
-                                locadora.removerFuncionario(idRemover);
-                                System.out.println("Remoção solicitada para o código " + idRemover + ".");
+
+                                //laís: a locadora lanca excecao quando o ID nao existe.
+                                //sem este try/catch o programa inteiro morre
+                                try
+                                {
+                                    locadora.removerFuncionario(idRemover);
+                                }
+                                catch (MissingFuncionarioException erroFuncionario)
+                                {
+                                    System.out.println(erroFuncionario.getMessage());
+                                }
                                 break;
                             }
 
