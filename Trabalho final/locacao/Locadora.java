@@ -31,68 +31,43 @@ public class Locadora {
         Filme novoFilme = new Filme(newChave, newNome, newEstrelas);
         catalogo.add(novoFilme);
         
-        Path arquivo = Paths.get("C:\\Documentos\\C06\\Trabalho final\\locacao\\catalogo.txt");
-        try {
-            Files.readString(arquivo);
-            } catch (IOException e) {
-                e.getStackTrace();
-            }
+    
+
+        Path arquivo = Paths.get("C:\\Documentos\\C06\\C06-Projeto-final-main\\Trabalho final\\locacao\\catalogo.txt");
 
         try {
             Files.writeString(arquivo, newChave + " " + newNome + " " + newEstrelas);
+            
             System.out.println("Filme adicionado com sucesso!");
-            } catch (Exception e) {
+            } catch (IOException e) {
             e.getStackTrace();
         }
     }
 
+
+
     public void removerFilme(int chaveFilme){
-        /*for (Filme filme : catalogo) {
-            if (filme != null && filme.getChave() == chaveFilme) {
-                filme = null;
-                return;
-            }
-        }*/
-
-        /* for(Filme filme : catalogo)
-        {
-            if (filme == null)
-            {
-                return;
-            }
-
-            else if (filme.getChave() == chaveFilme)
-            {
-                catalogo.remove(filme);
-                System.out.println("Filme " + filme + " removido.");
-                return;
-            }
-        }*/
-
         for (int i = 0; i < catalogo.size(); i++)
         {
             Filme filme = catalogo.get(i);
             if (filme != null && filme.getChave() == chaveFilme)
             {
                 catalogo.remove(i);
-                System.out.println("Filme " + filme + " removido.");
+                System.out.println("Filme removido.");
                 break;
             }
         }
 
-        Path arquivo = Paths.get("C:\\Documentos\\C06\\Trabalho final\\locacao\\catalogo.txt");
-        try {
-            Files.readString(arquivo);
-            } catch (IOException e) {
-                e.getStackTrace();
-            }
 
+
+        Path arquivo = Paths.get("C:\\\\Documentos\\\\C06\\\\C06-Projeto-final-main\\\\Trabalho final\\\\locacao\\\\catalogo.txt");
+    
         try {
             List<String> filecontent = Files.readAllLines(arquivo);
 
             filecontent.forEach((linha) -> {
                 String[] linhaQuebrada = linha.split(" ");
-                if (linhaQuebrada[0] == "" + chaveFilme) 
+                if (linhaQuebrada[0] == chaveFilme) 
                 {
                     try {
                         Files.writeString(arquivo, "Removido");
