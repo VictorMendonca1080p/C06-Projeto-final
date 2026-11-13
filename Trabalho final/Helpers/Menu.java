@@ -45,10 +45,14 @@ public class Menu {
                                 int chaveProduto = lerInteiro(
                                         "Selecione a chave do produto:"
                                 );
+                                if(locadora.calcularPrecoAluguel(chaveProduto) != -1){
+                                    totalDaCompra += locadora.calcularPrecoAluguel(chaveProduto);
 
-                                totalDaCompra += locadora.calcularPrecoAluguel(chaveProduto);
-
-                                cliente.alugarFilme(chaveProduto);
+                                    cliente.alugarFilme(chaveProduto);
+                                }
+                                else {
+                                    System.out.println("Essa chave não existe, insira uma chave válida");
+                                }
 
                                 break;
                             }

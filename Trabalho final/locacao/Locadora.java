@@ -192,6 +192,6 @@ public class Locadora {
                 return 20; // retorna o valor do filme2
         }
         }
-        return 0; // retorn 0 caso n esteja no catalogo (return estava dentro do for, por isso não compilava)
+        return -1; // retorn -1 caso n esteja no catalogo (return estava dentro do for, por isso não compilava)
     }
 }
