@@ -150,7 +150,7 @@ public class Menu {
                             case 4: {
 
                                 int newChave = lerInteiro(
-                                        "Informe uma nova chave para o produto:"
+                                        "Informe a chave para substituir:"
                                 );
 
                                 String newNome = lerTexto(

@@ -30,6 +30,8 @@ public class Locadora {
         Filme novoFilme = new Filme(newChave, newNome, newEstrelas);
         catalogo.add(novoFilme);
         
+
+        //adiciona no arquivo
         Path arquivo = Paths.get("locacao\\catalogo.txt");
 
         try {
@@ -56,7 +58,7 @@ public class Locadora {
         }
 
 
-
+        //remove do arquivo
         Path arquivo = Paths.get("locacao\\catalogo.txt");
     
         try {
@@ -75,14 +77,10 @@ public class Locadora {
                 {
                     ListaAtualizada.add(linha);
                 }
-
-                try {
-                    Files.write(arquivo, ListaAtualizada);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 
             });
+            
+            Files.write(arquivo, ListaAtualizada);
 
             } catch (IOException e) {
             e.getStackTrace();
@@ -91,40 +89,42 @@ public class Locadora {
     }
 
     public void trocarFilme(int chaveAntiga, String nomeNovo, int estrelasNovo){
-
+        
         for (int i = 0; i < catalogo.size(); i++)
         {
             Filme filme = catalogo.get(i);
             if (filme != null && filme.getChave() == chaveAntiga)
             {
                 catalogo.set(i, new Filme(chaveAntiga, nomeNovo, estrelasNovo));
+                System.out.println("Filme trocado com sucesso!");
                 break; //sai só for para continuar até a atualização do arquivo
             }
         }
 
-        Path arquivo = Paths.get("C:\\Documentos\\C06\\Trabalho final\\locacao\\catalogo.txt");
-        try {
-            Files.readString(arquivo);
-            } catch (IOException e) {
-                e.getStackTrace();
-            }
-
+        // chaveAntiga + " " + nomeNovo + " " + estrelasNovo
+        //troca no arquivo
+        Path arquivo = Paths.get("locacao\\catalogo.txt");
+    
         try {
             List<String> filecontent = Files.readAllLines(arquivo);
+            List<String> ListaAtualizada = new ArrayList<String>();
 
             filecontent.forEach((linha) -> {
                 String[] linhaQuebrada = linha.split(" ");
-                if (linhaQuebrada[0] == "" + chaveAntiga) 
+                if (linhaQuebrada[0].equals(String.valueOf(chaveAntiga)))
                 {
-                    try {
-                        Files.writeString(arquivo, chaveAntiga + " " + nomeNovo + " " + estrelasNovo);
-                        System.out.println("Filme trocado com sucesso!");
-                    } catch (IOException e) {
-                        e.getStackTrace();
-                    }
-                    
+                    ListaAtualizada.add("" + chaveAntiga + " " + nomeNovo + " " + estrelasNovo);
+                    System.out.println("Filme trocado com sucesso!");
+        
                 }
+                else
+                {
+                    ListaAtualizada.add(linha);
+                }
+                
             });
+            
+            Files.write(arquivo, ListaAtualizada);
 
             } catch (IOException e) {
             e.getStackTrace();
@@ -132,12 +132,6 @@ public class Locadora {
     }
 
     public void adicionarFuncionario(Funcionario novoFuncionario){ //consertado
-        /*for (Funcionario funcionario : funcionarios) {
-            if(funcionario == null){
-                funcionario = novoFuncionario;
-            }
-        }*/ //esse for nao adicionava nada
-
         if(novoFuncionario == null)
         {
             return;
@@ -160,28 +154,7 @@ public class Locadora {
 
     public void removerFuncionario(int idFuncao){
 
-        /*for (Funcionario funcionario : funcionarios) {
-            if(funcionario != null && funcionario.getIdFuncao() == idFuncao){
-                funcionario = null;
-                return;
-            }
-        }*/ //esse for nao removia nada
-
-        /* for(Funcionario funcionario : funcionarios)
-        {
-            if(funcionario == null)
-            {
-                return;
-            }
-
-            else if (funcionario.getIdFuncao() == idFuncao)
-            {
-                funcionarios.remove(funcionario);
-                System.out.println("Funcionário do ID " + idFuncao + " removido!");
-                return;
-            }
-        }*/
-
+        
         for (int i = 0; i < funcionarios.size(); i++)
         {
             Funcionario f = funcionarios.get(i);
