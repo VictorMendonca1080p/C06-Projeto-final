@@ -132,24 +132,20 @@ public class Locadora {
     }
 
     public void adicionarFuncionario(Funcionario novoFuncionario){ //consertado
-        if(novoFuncionario == null)
+        if(novoFuncionario != null)
         {
-            return;
-        }
-
-        for (Funcionario funcionario : funcionarios) //percorre a lista pra ver se tem ID repetido
-        {
-            if (funcionario.getIdFuncao() == novoFuncionario.getIdFuncao())
+            for (Funcionario funcionario : funcionarios) //percorre a lista pra ver se tem ID repetido
             {
-                System.out.println("Já existe um funcionário com esse ID!");
-                return; //return eh melhor que break pois sairá do metodo por completo, e não somente do for e irá
-                        //para o proximo comando, senão não cumpriria o que pede, que é cancelar o cadastro sem adicionar
-                        //se houver ID repetido
+                if (funcionario.getIdFuncao() == novoFuncionario.getIdFuncao())
+                {
+                    System.out.println("Já existe um funcionário com esse ID!");
+                    return; //return eh melhor que break pois sairá do metodo por completo, e não somente do for e irá
+                            //para o proximo comando, senão não cumpriria o que pede, que é cancelar o cadastro sem adicionar
+                            //se houver ID repetido
+                }
             }
+            funcionarios.add(novoFuncionario); //se nao tiver nada de errado, adiciona
         }
-
-        funcionarios.add(novoFuncionario); //se nao tiver nada de errado, adiciona
-
     }
 
     public void removerFuncionario(int idFuncao){
@@ -190,7 +186,7 @@ public class Locadora {
         for (Filme filme : catalogo) {
             if(filme.getChave() == chaveFilme){
                 return 20; // retorna o valor do filme2
-        }
+            }
         }
         return -1; // retorn -1 caso n esteja no catalogo (return estava dentro do for, por isso não compilava)
     }
