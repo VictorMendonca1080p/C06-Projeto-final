@@ -1,9 +1,7 @@
 package pessoa;
 
-import descricao.Descritivel;
-
 //laís: superclasse abstrata, nao vira objeto. existe so para cliente e funcionario herdarem
-public abstract class Pessoa implements Descritivel
+public abstract class Pessoa
 {
     protected String nome;
     protected String cpf;
@@ -16,6 +14,5 @@ public abstract class Pessoa implements Descritivel
 
     //laís: sem o corpo de proposito. cada filha PRECISA escrever sua versao
     //é abstrata. nosso foco tem que ser redirecionar o descritivel, e não tirar o requisito da abstracao
-    @Override
     public abstract String exibirDetalhes();
 }

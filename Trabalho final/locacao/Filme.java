@@ -14,6 +14,7 @@ public class Filme implements Descritivel {
         this.estrelas = estrelas;
     }
 
+    @Override
     public String exibirDetalhes() {
         return "Chave: " + chave + "\nNome: " + nome + "\nEstrelas: " + estrelas;
     }
