@@ -10,7 +10,7 @@ Instituto Nacional de Telecomunicações (Inatel) - Prof. Christopher Lima
 - CARLOS EDUARDO CARVALHO VILAS BOAS - 441
 - LAÍS CARLOS RODRIGUES - 681
 - PEDRO GASPAROTTO CARVALHO - 655
-- VICTOR DOS ANJOS MENDONÇA - 
+- VICTOR DOS ANJOS MENDONÇA - 544
 
 ---
 
