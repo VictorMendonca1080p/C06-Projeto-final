@@ -66,7 +66,7 @@ Trabalho final/
 
 ## Diagrama UML
 
-![Diagrama UML da solução](https://github.com/VictorMendonca1080p/C06-Projeto-final/blob/2fc9050bb08e1e5d09b98d1892ab2f47a2728f28/Projeto_C06_UML.png)
+![Diagrama UML da solução](https://github.com/VictorMendonca1080p/C06-Projeto-final/blob/6aed7401420f4e56d46e22805d59fc396709a72a/Projeto_C06_NP2_UML.png)
 
 ---
 
