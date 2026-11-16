@@ -23,7 +23,7 @@ public class Funcionario extends Pessoa implements Descritivel
     }
 
     @Override
-    public void identificarPerfil()
+    public void identificarPermissao()
     {
         System.out.println("Permissões de acesso: Gerenciar catálogo e quadro de funcionários.");
     }

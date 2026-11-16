@@ -20,7 +20,7 @@ public class Cliente extends Pessoa implements Descritivel
     }
 
     @Override
-    public void identificarPerfil()
+    public void identificarPermissao()
     {
         System.out.println("--- Acesso ao cliente: " + nome + " ---");
         System.out.println("Permissões: Consultar catálogo e alugar filmes.");

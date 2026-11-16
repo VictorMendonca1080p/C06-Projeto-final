@@ -29,7 +29,7 @@ public class Menu
                 {
                     double totalDaCompra = 0;
                     int opcaoCliente;
-                    cliente.identificarPerfil();
+                    cliente.identificarPermissao();
 
                     do
                     {
@@ -194,7 +194,7 @@ public class Menu
 
                                 System.out.println("\nFuncionário cadastrado. ");
                                 Exibidor.mostrar(novoFuncionario);
-                                novoFuncionario.identificarPerfil();
+                                novoFuncionario.identificarPermissao();
 
                                 novoFuncionario.executarFuncao();
                                 break;
