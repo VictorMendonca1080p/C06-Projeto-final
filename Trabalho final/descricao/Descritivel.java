@@ -1,5 +1,6 @@
 package descricao;
 
-public interface Descritivel {
+public interface Descritivel
+{
     String exibirDetalhes();
 }

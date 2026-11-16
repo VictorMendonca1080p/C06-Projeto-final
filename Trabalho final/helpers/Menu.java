@@ -1,18 +1,18 @@
-package Helpers;
+package helpers;
 import descricao.Exibidor;
 import java.util.Scanner;
-import excesao.MissingFuncionarioException; //laís
-import excesao.MissingFilmeException; //laís
+import excecao.MissingFuncionarioException;
+import excecao.MissingFilmeException;
 
 import locacao.*;
 import pessoa.*;
 
-public class Menu {
-
+public class Menu
+{
     static private Scanner entrada = new Scanner(System.in);
 
-    static public void Start(Locadora locadora, Cliente cliente) {
-
+    static public void Start(Locadora locadora, Cliente cliente)
+    {
         int opcaoPrincipal;
 
         do {
@@ -22,43 +22,41 @@ public class Menu {
 
             opcaoPrincipal = lerInteiro("Escolha uma opção: ");
 
-            switch (opcaoPrincipal) {
+            switch (opcaoPrincipal)
+            {
 
-                case 1: {
-
-                    //laís: o carrinho nasce aqui, entao cada cliente comeca do zero com o total
+                case 1:
+                {
                     double totalDaCompra = 0;
                     int opcaoCliente;
 
-                    do {
+                    do
+                    {
                         System.out.println("\nMenu do Cliente:");
                         System.out.println("1 - Adicionar ao carrinho");
                         System.out.println("2 - Finalizar compra");
                         System.out.println("3 - Ver meus dados");
                         System.out.println("4 - Sair do menu de Clientes");
 
-                        //laís: o catalogo saiu daqui. aparecia inteiro entre as opcoes e a pergunta
-                        //
-
                         opcaoCliente = lerInteiro("Escolha uma opção: ");
 
-                        switch (opcaoCliente) {
-
-                            case 1: {
-                                //laís: agora as chaves ficam aqui. mais organizado
+                        switch (opcaoCliente)
+                        {
+                            case 1:
+                            {
                                 locadora.mostrarFilmes();
-                                int chaveProduto = lerInteiro(
-                                        "Selecione a chave do produto:"
-                                );
-                                if(locadora.calcularPrecoAluguel(chaveProduto) != -1){
+                                int chaveProduto = lerInteiro("Selecione a chave do produto:");
+
+                                if(locadora.calcularPrecoAluguel(chaveProduto) != -1)
+                                {
                                     totalDaCompra += locadora.calcularPrecoAluguel(chaveProduto);
 
                                     cliente.alugarFilme(chaveProduto);
                                 }
-                                else {
+                                else
+                                {
                                     System.out.println("Essa chave não existe, insira uma chave válida: ");
                                 }
-
                                 break;
                             }
 
@@ -68,39 +66,34 @@ public class Menu {
                                 System.out.println("Valor total: " + totalDaCompra);
 
                                 opcaoCliente = 4;
-
                                 break;
 
                             case 3:
 
-                                Exibidor.mostrar(cliente); //laís
-
+                                Exibidor.mostrar(cliente);
                                 break;
 
                             case 4:
 
                                 System.out.println("Saindo do menu de clientes...");
-
                                 break;
 
                             default:
 
                                 System.out.println("Escolha uma opção válida!");
-
                                 break;
                         }
 
                     } while (opcaoCliente != 4);
-
                     break;
                 }
 
-                case 2: {
-
+                case 2:
+                {
                     int opcaoFuncionario;
 
-                    do {
-
+                    do
+                    {
                         System.out.println("\nMenu do Funcionário:");
                         System.out.println("1 - Mostrar filmes");
                         System.out.println("2 - Adicionar filme");
@@ -113,46 +106,35 @@ public class Menu {
 
                         opcaoFuncionario = lerInteiro("Escolha uma opção: ");
 
-                        switch (opcaoFuncionario) {
-
+                        switch (opcaoFuncionario)
+                        {
                             case 1:
 
                                 locadora.mostrarFilmes();
-
                                 break;
 
-                            case 2: {
+                            case 2:
+                            {
+                                int newChave = lerInteiro("Informe uma chave para o produto: ");
 
-                                int newChave = lerInteiro(
-                                        "Informe uma chave para o produto: "
-                                );
-
-                                String newNome = lerTexto(
-                                        "Informe o nome do novo filme: "
-                                );
+                                String newNome = lerTexto("Informe o nome do novo filme: ");
 
                                 int newEstrelas = lerInteiro(
                                         "Informe a quantidade de estrelas (0 a 5): ",
                                         0,
-                                        5
-                                );
+                                        5);
 
-                                locadora.adicionarFilme(
-                                        newChave,
-                                        newNome,
-                                        newEstrelas
-                                );
-
+                                locadora.adicionarFilme(newChave, newNome, newEstrelas);
                                 break;
                             }
 
-                            case 3: {
+                            case 3:
+                            {
 
-                                int chaveRemover = lerInteiro(
-                                        "Informe a chave do produto a ser removido: "
-                                );
+                                int chaveRemover = lerInteiro("Informe a chave do produto a ser removido: ");
 
-                                //laís: a locadora lanca excecao quando a chave nao existe
+                                //a Locadora lanca excecao quando nao encontra.
+                                //sem o try/catch a excecao sobe e o programa inteiro para
                                 try
                                 {
                                     locadora.removerFilme(chaveRemover);
@@ -161,27 +143,22 @@ public class Menu {
                                 {
                                     System.out.println(erroFilme.getMessage());
                                 }
-
                                 break;
                             }
 
-                            case 4: {
+                            case 4:
+                            {
+                                int newChave = lerInteiro("Informe a chave para substituir: ");
 
-                                int newChave = lerInteiro(
-                                        "Informe a chave para substituir: "
-                                );
-
-                                String newNome = lerTexto(
-                                        "Informe um novo nome para o filme: "
-                                );
+                                String newNome = lerTexto("Informe um novo nome para o filme: ");
 
                                 int newEstrelas = lerInteiro(
                                         "Informe a nova quantidade de estrelas (0 a 5): ",
                                         0,
-                                        5
-                                );
+                                        5);
 
-                                //laís: mesma protecao do remover
+                                //a Locadora lanca excecao quando nao encontra.
+                                //sem o try/catch a excecao sobe e o programa inteiro para
                                 try
                                 {
                                     locadora.trocarFilme(newChave, newNome, newEstrelas);
@@ -190,48 +167,37 @@ public class Menu {
                                 {
                                     System.out.println(erroFilme.getMessage());
                                 }
-
                                 break;
                             }
 
-                            case 5: {
+                            case 5:
+                            {
+                                String nomeFuncionario = lerTexto("Nome do funcionário: ");
 
-                                String nomeFuncionario = lerTexto(
-                                        "Nome do funcionário: "
-                                );
+                                String cpfFuncionario = lerTexto("CPF do funcionário: ");
 
-                                String cpfFuncionario = lerTexto(
-                                        "CPF do funcionário: "
-                                );
-
-                                int idDaFuncao = lerInteiro(
-                                        "Código da função (número inteiro): "
-                                );
+                                int idDaFuncao = lerInteiro("Código da função (número inteiro): ");
 
                                 Funcionario novoFuncionario = new Funcionario(
                                         nomeFuncionario,
                                         cpfFuncionario,
-                                        idDaFuncao
-                                );
+                                        idDaFuncao);
 
                                 locadora.adicionarFuncionario(novoFuncionario);
 
                                 System.out.println("\nFuncionário cadastrado: ");
-                                Exibidor.mostrar(novoFuncionario); //laís
+                                Exibidor.mostrar(novoFuncionario);
 
                                 novoFuncionario.executarFuncao();
-
                                 break;
                             }
 
-                            case 6: {
+                            case 6:
+                            {
+                                int idRemover = lerInteiro("Código da função do funcionário que sai: ");
 
-                                int idRemover = lerInteiro(
-                                        "Código da função do funcionário que sai: "
-                                );
-
-                                //laís: a locadora lanca excecao quando o ID nao existe.
-                                //sem este try/catch o programa inteiro morre
+                                //a Locadora lanca excecao quando nao encontra.
+                                //sem o try/catch a excecao sobe e o programa inteiro para
                                 try
                                 {
                                     locadora.removerFuncionario(idRemover);
@@ -240,116 +206,110 @@ public class Menu {
                                 {
                                     System.out.println(erroFuncionario.getMessage());
                                 }
-
                                 break;
                             }
 
-                            //laís: listar antes de remover, senao ninguem sabe qual ID existe
                             case 7:
 
                                 locadora.mostrarFuncionarios();
-
                                 break;
 
                             case 8:
 
                                 System.out.println("Saindo do menu de funcionários...");
-
                                 break;
 
                             default:
 
                                 System.out.println("Escolha uma opção válida!");
-
                                 break;
                         }
 
                     } while (opcaoFuncionario != 8);
-
                     break;
                 }
 
                 case 0:
 
                     System.out.println("Encerrando o programa...");
-
                     break;
 
                 default:
 
                     System.out.println("Escolha uma opção válida!");
-
                     break;
             }
 
         } while (opcaoPrincipal != 0);
     }
 
-
-    static public String lerTexto(String pergunta) {
+    //nao aceita resposta em branco: fica perguntando ate o usuario digitar alguma coisa
+    static public String lerTexto(String pergunta)
+    {
 
         String resposta;
 
-        while (true) {
-
+        while (true)
+        {
             System.out.print(pergunta);
 
             resposta = entrada.nextLine();
 
-            if (resposta.trim().isEmpty()) {
-
+            if(resposta.trim().isEmpty())
+            {
                 System.out.println("Este campo não pode ficar em branco!");
-
-            } else {
-
+            }
+            else
+            {
                 return resposta;
             }
         }
     }
 
-    static public int lerInteiro(String pergunta) {
+    //tratamento de excecao: captura NumberFormatException e repete a pergunta,
+    //em vez de deixar a excecao subir e encerrar o programa
+    static public int lerInteiro(String pergunta)
+    {
 
         int numeroLido;
 
-        while (true) {
-
+        while(true)
+        {
             System.out.print(pergunta);
 
             String digitado = entrada.nextLine();
 
-            try {
-
+            try
+            {
                 numeroLido = Integer.parseInt(digitado.trim()); //formata para numeros inteiros e nega letras
 
                 return numeroLido;
 
-            } catch (NumberFormatException erroFormato) {
-
-                System.out.println(
-                        "Entrada inválida! Digite apenas números inteiros."
-                );
+            }
+            catch(NumberFormatException erroFormato)
+            {
+                System.out.println("Entrada inválida! Digite apenas números inteiros.");
             }
         }
     }
 
-    static public int lerInteiro(String pergunta, int minimo, int maximo) {
-
+    //sobrecarga: mesmo nome do metodo acima, assinatura diferente.
+    //o compilador escolhe qual chamar pelos parametros
+    static public int lerInteiro(String pergunta, int minimo, int maximo)
+    {
         int numeroLido;
 
-        while (true) {
-
+        while(true)
+        {
             numeroLido = lerInteiro(pergunta);
 
-            if (numeroLido >= minimo && numeroLido <= maximo) {
-
+            if (numeroLido >= minimo && numeroLido <= maximo)
+            {
                 return numeroLido;
-
-            } else {
-
-                System.out.println(
-                        "Valor inválido! Digite um número entre "
-                                + minimo + " e " + maximo + "."
-                );
+            }
+            else
+            {
+                System.out.println("Valor inválido! Digite um número entre " + minimo + " e " + maximo + ".");
             }
         }
     }

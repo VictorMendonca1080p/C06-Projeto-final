@@ -1,31 +1,32 @@
 package pessoa;
 import descricao.Descritivel;
 
+//herda estado e construtor de Pessoa, e assina o contrato de Descritivel
 public class Cliente extends Pessoa implements Descritivel
 {
-    //laís: conta quantos filmes o cliente ja alugou.
     private int filmesAlugados;
 
     public Cliente(String nome, String cpf)
     {
+        //chama o construtor da superclasse para inicializar o estado herdado
         super(nome, cpf);
     }
 
-    //laís: versão de exibiçao do cliente
+    //sobrescrita: a assinatura vem da superclasse, o corpo eh proprio dessa classe
     @Override
     public String exibirDetalhes()
     {
         return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
-    //laís: so registra a intencao do cliente. conferir o catalogo e calcular o preco é da locadora
+    //aqui so registra a intencao do cliente. conferir se a chave existe no catalogo e
+    //calcular o preco sao responsabilidade da Locadora, que eh quem conhece o catalogo
     public void alugarFilme(int chaveFilme)
     {
-        //laís: chave zero ou negativa nao existe no catalogo, entao nem continua
         if(chaveFilme <= 0)
         {
             System.out.println("Solicitação recusada: a chave " + chaveFilme + " não é válida.");
-            return; //laís: o metodo é void, entao este return so interrompe
+            return;
         }
 
         filmesAlugados++;

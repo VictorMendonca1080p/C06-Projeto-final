@@ -2,27 +2,27 @@ package pessoa;
 import descricao.Descritivel;
 import java.util.Random;
 
-//laís: funcionario e o objeto-parte da relaçao com a locadora
+//herda estado e construtor de Pessoa, e assina o contrato de Descritivel
 public class Funcionario extends Pessoa implements Descritivel
 {
-    //laís: codigo da funçao. e por ele que a locadora acha o funcionario para remover
+    //codigo do cargo, nao id da pessoa. e por ele que a Locadora acha quem remover
     private int idFuncao;
 
     public Funcionario(String nome, String cpf, int idFuncao)
     {
+        //chama o construtor da superclasse para inicializar o estado herdado
         super(nome, cpf);
         this.idFuncao = idFuncao;
     }
 
-    //laís: versao do funcionario, mostra o id, nom e e cpf
+    //sobrescrita: a assinatura vem da superclasse, o corpo eh proprio dessa classe
     @Override
     public String exibirDetalhes()
     {
         return "INFORMAÇÕES DO(A) FUNCIONÁRIO(A): " + "\n ID: " + idFuncao + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
-    //laís: imprime o que o funcionario esta fazendo de modo aleatorio a cada chamada
-    //aproveitei o desafio passado em sala
+    //sorteia a atividade a cada chamada, entao o mesmo funcionario pode aparecer fazendo coisas diferentes
     public void executarFuncao()
     {
         Random rand = new Random();
@@ -38,7 +38,8 @@ public class Funcionario extends Pessoa implements Descritivel
         System.out.println("Funcionário(a) do ID " + idFuncao + " está " + trabalhando[escolha]);
     }
 
-    //laís: idFuncao é private, entao a locadora precisa deste getter pra comparar
+    //encapsulamento: o membro eh private, o acesso de fora passa por este metodo.
+    //public porque a Locadora esta em outro pacote e so encontra por getter
     public int getIdFuncao()
     {
         return idFuncao;
