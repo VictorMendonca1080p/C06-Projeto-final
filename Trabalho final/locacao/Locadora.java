@@ -147,7 +147,6 @@ public class Locadora
 
                 if (linhaQuebrada[0].equals(String.valueOf(chaveAntiga)))
                 {
-                    //laís: sem println aqui, quem avisa e o laco da lista, senao duplica a mensagem
                     listaAtualizada.add(chaveAntiga + " " + nomeNovo + " " + estrelasNovo);
                 }
                 else

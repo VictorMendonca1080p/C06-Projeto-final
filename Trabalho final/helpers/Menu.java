@@ -101,7 +101,7 @@ public class Menu
                         System.out.println("4 - Trocar filme");
                         System.out.println("5 - Adicionar funcionário");
                         System.out.println("6 - Remover funcionário");
-                        System.out.println("7 - Listar funcionários"); //laís
+                        System.out.println("7 - Listar funcionários");
                         System.out.println("8 - Sair do menu de funcionários");
 
                         opcaoFuncionario = lerInteiro("Escolha uma opção: ");
