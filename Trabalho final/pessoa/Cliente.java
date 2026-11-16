@@ -19,6 +19,13 @@ public class Cliente extends Pessoa implements Descritivel
         return "INFORMAÇÕES DO(A) CLIENTE: " + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
+    @Override
+    public void identificarPerfil()
+    {
+        System.out.println("--- Acesso ao cliente: " + nome + " ---");
+        System.out.println("Permissões: Consultar catálogo e alugar filmes.");
+    }
+
     //aqui so registra a intencao do cliente. conferir se a chave existe no catalogo e
     //calcular o preco sao responsabilidade da Locadora, que eh quem conhece o catalogo
     public void alugarFilme(int chaveFilme)

@@ -22,6 +22,12 @@ public class Funcionario extends Pessoa implements Descritivel
         return "INFORMAÇÕES DO(A) FUNCIONÁRIO(A): " + "\n ID: " + idFuncao + "\n Nome: " + nome + "\n CPF: " + cpf;
     }
 
+    @Override
+    public void identificarPerfil()
+    {
+        System.out.println("Permissões de acesso: Gerenciar catálogo e quadro de funcionários.");
+    }
+
     //sorteia a atividade a cada chamada, entao o mesmo funcionario pode aparecer fazendo coisas diferentes
     public void executarFuncao()
     {

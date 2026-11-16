@@ -29,6 +29,7 @@ public class Menu
                 {
                     double totalDaCompra = 0;
                     int opcaoCliente;
+                    cliente.identificarPerfil();
 
                     do
                     {
@@ -91,6 +92,7 @@ public class Menu
                 case 2:
                 {
                     int opcaoFuncionario;
+
 
                     do
                     {
@@ -190,8 +192,9 @@ public class Menu
 
                                 locadora.adicionarFuncionario(novoFuncionario);
 
-                                System.out.println("\nFuncionário cadastrado: ");
+                                System.out.println("\nFuncionário cadastrado. ");
                                 Exibidor.mostrar(novoFuncionario);
+                                novoFuncionario.identificarPerfil();
 
                                 novoFuncionario.executarFuncao();
                                 break;

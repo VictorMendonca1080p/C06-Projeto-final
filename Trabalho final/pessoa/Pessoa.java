@@ -17,5 +17,5 @@ public abstract class Pessoa
     //metodo abstrato: a superclasse define o contrato, cada subclasse escreve a implementacao.
     //a interface Descritivel fica nas filhas, que sao quem cumpre o contrato,
     //e nao nesta classe, que so o repassa
-    public abstract String exibirDetalhes();
+    public abstract void identificarPerfil();
 }
