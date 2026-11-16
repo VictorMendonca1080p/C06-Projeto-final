@@ -32,12 +32,6 @@ public class Locadora
 
     public void adicionarFilme(int newChave, String newNome, int newEstrelas)
     {
-        if(buscarFilme(newChave) != null) //recusa chave repetida
-        {
-            System.out.println("Já existe um filme com a chave " + newChave + " !");
-            return;
-        }
-
         Filme novoFilme = new Filme(newChave, newNome, newEstrelas);
         catalogo.add(novoFilme);
 

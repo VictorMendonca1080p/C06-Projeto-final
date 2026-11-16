@@ -55,7 +55,7 @@ public class Menu
                                 }
                                 else
                                 {
-                                    System.out.println("Essa chave não existe, insira uma chave válida: ");
+                                    System.out.println("Essa chave não existe, insira uma chave válida. ");
                                 }
                                 break;
                             }
@@ -116,6 +116,11 @@ public class Menu
                             case 2:
                             {
                                 int newChave = lerInteiro("Informe uma chave para o produto: ");
+                                while(locadora.buscarFilme(newChave) != null) //recusa chave repetida
+                                {
+                                    System.out.println("Já existe um filme com a chave " + newChave + " !");
+                                    newChave = lerInteiro("Informe uma chave para o produto: ");
+                                }
 
                                 String newNome = lerTexto("Informe o nome do novo filme: ");
 
