@@ -173,7 +173,8 @@ diretamente no desenvolvimento de software.
 
 **Ferramentas:** 
 - [Gemini - Laís](https://share.gemini.google/00eYaYXuHRxl)
-
+- [Gemini - Pedro](https://share.gemini.google/ARdTaFGoWgL8)
+  
 **Como foram utilizadas:**
 
 - **Revisão e depuração de código já escrito pelo grupo;** 
